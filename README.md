@@ -1,10 +1,12 @@
 Digital TV Parser
 ================================
 
+It's a digital television parser, implemented in Ruby. It allows you to filter a specific pid or view all services incoming in a PAT packet.
+
 Filter PIDs from .ts to .ts
 -------------------------
 
-        ruby pid_filter.rb a b c
+    ruby pid_filter.rb a b c
 
 where:
   
@@ -14,7 +16,7 @@ where:
 
 e.g. to filter PATs:
 
-        ruby pid_filter.rb ~/tvd/sample533.ts ~/tvd/pats.ts 0x00
+    ruby pid_filter.rb ~/tvd/sample533.ts ~/tvd/pats.ts 0x00
 
 
 
@@ -22,12 +24,12 @@ e.g. to filter PATs:
 View services in the PAT:
 -------------------------
 
-        ruby services_from_pat.rb path_to_ts_file
+    ruby services_from_pat.rb path_to_ts_file
 
 
 e.g.:
 
-        ruby services_from_pat.rb ~/tvd/sample533.ts
+    ruby services_from_pat.rb ~/tvd/sample533.ts
 
 print:
 
