@@ -1,7 +1,7 @@
 Digital TV Parser
 ================================
 
-It's a digital television parser, implemented in Ruby. It allows you to filter a specific pid or view all services incoming in a PAT packet.
+It's a digital television parser, implemented in Ruby. It allows you to filter a specific PID (Program Identification) or view all the incoming services in a PAT (Program Association Table) package.
 
 Filter PIDs from .ts to .ts
 -------------------------
