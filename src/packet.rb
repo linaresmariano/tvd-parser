@@ -21,7 +21,6 @@ class Packet
 	end
 
 	def get_header
-		#Bytes.s2_from_bytes_s(@data[1..2])
 		Bytes.s2_from_bytes_s([@data[1], @data[2]])
 	end
 
@@ -44,6 +43,11 @@ class Packet
 
 	def has_pid?(pid_search_hex)
 		self.get_pid.eql? Bytes.to_s2_pid(pid_search_hex)
+	end
+
+	def appear_pid?(pids_array)
+		pids_array.map { |x| return true if has_pid? x }
+		return false
 	end
 
 	def get_adapt_field_ctrl

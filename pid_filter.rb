@@ -3,7 +3,7 @@
 require_relative 'src/packet.rb'
 
 # Parser de Transport Streams
-def filter_id(source, dest, pid_to_filter)
+def filter_id(source, dest, pids_to_filter_array)
 
 	byte_synch = 'G'
 	filtrados = 0
@@ -32,7 +32,7 @@ def filter_id(source, dest, pid_to_filter)
 			end
 			
 			# Si encuentro el PID guardo el paquete en el archivo destino
-			if ts.has_pid? pid_to_filter
+			if ts.appear_pid? pids_to_filter_array
 				filtrados += 1
   				output.write(ts.data)
 			end
@@ -51,6 +51,7 @@ end
 
 #pid = 0x00 # PAT
 #pid = 0x0131 # Tecnopolis - video
+#pid = 0x0132 # Tecnopolis - audio
 #pid = 0x0211 # Tv-Publica One-Seg - video
 #pid = 0x0121 # TV-Publica HD - video
 #pid = 0x0122 # TV-Publica HD - audio
@@ -59,14 +60,15 @@ end
 ########################
 #######   RUN   ########
 ########################
-if(ARGV.length == 3)
+if(ARGV.length >= 3)
 	src  = ARGV[0]
 	dest = ARGV[1]
-	pid  = Integer(ARGV[2])
+	pids = ARGV[2..-1].map { |x| Integer(x) }
 
-	filter_id(src, dest, pid)
+	#print pid
+	filter_id(src, dest, pids)
 else
-	puts "Espero 3 argumentos:  source.ts  destination.ts  filter_pid"
+	puts "Wrong number of arguments. At least 3:  source.ts  destination.ts  filter_pid1"
 end
 
 
