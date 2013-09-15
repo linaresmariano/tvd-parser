@@ -1,24 +1,35 @@
 Digital TV Parser
-==========
+================================
 
-* To filter PIDs from .ts to .ts
-	ruby pid_filter.rb a b c
+Filter PIDs from .ts to .ts
+-------------------------
 
-	where
-		a = path_ts_src_file
-		b = path_ts_dest_file
-		c = pid_to_filter
+        ruby pid_filter.rb a b c
 
-	e.g. to filter PATs:
-		ruby pid_filter.rb ~/tvd/sample533.ts ~/tvd/pats.ts 0x00
+where:
+  
+* a = path to .ts source file
+* b = path to .ts destination file
+* c = pid to filter
+
+e.g. to filter PATs:
+
+        ruby pid_filter.rb ~/tvd/sample533.ts ~/tvd/pats.ts 0x00
 
 
 
-* To view services in the PAT:
-	ruby services_from_pat.rb path_to_ts_file
+
+View services in the PAT:
+-------------------------
+
+        ruby services_from_pat.rb path_to_ts_file
 
 
-e.g.: ruby services_from_pat.rb ~/tvd/sample533.ts
+e.g.:
+
+        ruby services_from_pat.rb ~/tvd/sample533.ts
+
+print:
 
 <table>
     <tr>
@@ -38,4 +49,3 @@ e.g.: ruby services_from_pat.rb ~/tvd/sample533.ts
         <td>program_number: 0xe762 - program_map_PID: 0x0103</td>
     </tr>
 </table>
-
